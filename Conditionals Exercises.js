@@ -284,7 +284,10 @@ else if(item === 1){
   answer9="Welcome to coding 101!";
 }else if(item === 1000000){
   answer9="You are one in a million!";;
-}else{
+}else if(item === true || item ===false){
+  answer9 = "Please send a number, that was a " + typeof item;
+}
+else{
   answer9 = "Thanks for that!";
 }
   // --------------------------------------------
@@ -301,6 +304,7 @@ console.log(exercise9(5));
 console.log(exercise9('gt'));
 console.log(exercise9(7));
 console.log(exercise9(undefined));
+console.log(exercise9(true));
 
 // EXERCISE 10.
 // This question is a modified version of a classic programming question
