@@ -1,5 +1,6 @@
+
 async function showBooks(){
-    const URL= "http://localhost:8080/books";
+    const URL= "http://localhost:8080/api/books";
     const response = await fetch(URL);
     console.log(response);
     const responseBooks = await response.json();
@@ -14,6 +15,13 @@ async function showBooks(){
                 <div>Author: ${book.author}</div> 
                 <div>Format: ${book.format}</div>
                 <hr>
+
+                <button type="button" class="btn btn-danger" onClick="deleteBook">Delete</button>
+                <button types="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#editBookModal" onClick="setEditModal(${book.isbn})">
+                    Edit
+                </button>
+
                 </div>
             </div>
         </div>`

@@ -1,40 +1,47 @@
-//this will your express server
 import express from "express";
 import cors from "cors";
 import books from "./books.js";
-import path from 'path';
-
-const app=express();
+import path from "path";
+import bodyParser from "body-parser";
+//this creates my whole app
+//6:determines which port you want
+//Per cristina "not sure what cors is doing. its middleware that allows me to control"
+//15:creating endpoint whenever somebody visits localhost8080
+//17:creating an endpoint for the route '/api/books' that prints all the books; - GET request
+//21: open the index.html file that is in the client folder in your path
+const app = express();
 const PORT = 8080;
 
-//configuring cors middleware
 app.use(cors());
 
+const _dirname = path.resolve();
 
-// Configuring express-prettify middleware for working with JSON
-app.use(pretty({ query: 'pretty' }));
+app.use(express.static("client"));
 
-// Configuring body parser middleware
+//this is an endpoint: something that is sendin info and need to consume info to front end
+app.get("/api/books", (req, resp) => {
+  resp.json(books);
+});
+
+//this is a route: sends a req for html
+app.get("/", (req, resp) => {
+  //resp.send("Hello Techtonica this will be my first REST API");
+  resp.sendFile(path.join(_dirname, "client", "index.html"));
+});
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// to render static files from the client folder
-app.use(express.static('client'));
-
-//const direct
-const __dirname= path.resolve();
-
-app.get('/books', (req, resp)=> {
-    resp.json(books);
-})
-
-
-app.get('/',(req, resp)=> {
-    //open index.html (creates route)
-    resp.sendFile(path.join(__dirname, 'client', 'index.html'));
+app.post("/book", (req, res) => {
+  const book = req.body;
+  // Output the book to the console for debugging
+  console.log(book);
+  books.push(book);
+  res.send("Book is added to the database");
 });
 
+app.get("/book", (req, res) => {
+  res.json("book");
+});
 
-
-app.listen(PORT, () => console.log(`Hola at ${PORT}`));
-
+app.listen(PORT, () => console.log(`HOLA! Server running at ${PORT}`));
