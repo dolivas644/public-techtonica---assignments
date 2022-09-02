@@ -4,7 +4,7 @@ body{
 
 .h1{
     border: 2px solid white;
-    background-color: beige;
+    background-image: url('https://img.freepik.com/free-vector/white-gold-geometric-pattern-background-vector_53876-140726.jpg');
     display:center;
     text-align: center;
     font-family: Georgia, serif;
@@ -12,7 +12,7 @@ body{
 }
 .h2{
     border: 2px solid white;
-    background-color: beige;
+    background-image: url('https://img.freepik.com/free-vector/white-gold-geometric-pattern-background-vector_53876-140726.jpg');
     display:center;
     text-align: center;
     font-family: Georgia, serif;
@@ -21,6 +21,10 @@ body{
 #editForm{
     size:30px;
     color: black;
-    background-color: beige;
+    background-image: url('https://img.freepik.com/free-vector/white-gold-geometric-pattern-background-vector_53876-140726.jpg');
     font-family: Georgia, serif;
+}
+.card{
+    background-image: url('https://img.freepik.com/free-vector/white-gold-geometric-pattern-background-vector_53876-140726.jpg');
+background-repeat: repeat;
 }
