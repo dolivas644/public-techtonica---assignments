@@ -1,0 +1,26 @@
+body{
+    background-image: url('https://images.unsplash.com/photo-1533285860212-c85e7140a408?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGxpYnJhcnklMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80');
+}
+
+.h1{
+    border: 2px solid white;
+    background-color: beige;
+    display:center;
+    text-align: center;
+    font-family: Georgia, serif;
+    border-radius:55%;
+}
+.h2{
+    border: 2px solid white;
+    background-color: beige;
+    display:center;
+    text-align: center;
+    font-family: Georgia, serif;
+}
+
+#editForm{
+    size:30px;
+    color: black;
+    background-color: beige;
+    font-family: Georgia, serif;
+}
