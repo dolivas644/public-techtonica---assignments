@@ -27,13 +27,12 @@
 // }
 
 // const deleteBook = (isbn) => {
-//     const xhttp = new XMLHttpRequest();
-
-//     xhttp.open("DELETE", `http://localhost:8080/book/${isbn}`, false);
-//     xhttp.send();
+//      //const element = document.querySelector('#editForm')
+//     fetch(`http://localhost:8080/api/books/${isbn}`, { method: 'DELETE' })
+//     // .then(() => element.innerHTML='');
 
 //     // Reloading the page
-//     location.reload();
+//     .then(location.reload());
 // }
 
 async function showBooks(){
@@ -53,7 +52,7 @@ async function showBooks(){
                 <div>Format: ${book.format}</div>
                 <hr>
 
-                <button type="button" class="btn btn-danger" onClick="deleteBook">Delete</button>
+                <button type="button" class="btn btn-danger" onClick="deleteBook(${book.isbn})">Delete</button>
                 <button types="button" class="btn btn-primary" data-toggle="modal"
                     data-target="#editBookModal" onClick="setEditModal(${book.isbn})">
                     Edit
@@ -66,3 +65,22 @@ async function showBooks(){
     }
 }
 showBooks();
+
+const deleteBook = (isbn) => {
+    //const element = document.querySelector('#editForm')
+   fetch(`http://localhost:8080/api/books/${isbn}`, { method: 'DELETE' })
+   // .then(() => element.innerHTML='');
+
+   // Reloading the page
+   .then(location.reload());
+}
+
+// const deleteBook = (isbn) => {
+//     const xhttp = new XMLHttpRequest();
+
+//     xhttp.open("DELETE", `http://localhost:8080/api/books/${isbn}`, false);
+//     xhttp.send();
+
+//     // Reloading the page
+//     location.reload();
+// }
