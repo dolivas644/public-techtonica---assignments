@@ -11,7 +11,7 @@ console.log(`Your api key is ${process.env.API_KEY}`);
 const app = express();
 
 // //Set the port that you want the server to run on
-const PORT = 5000;
+const PORT = 5001;
 app.use(cors());
 
 
