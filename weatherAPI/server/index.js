@@ -20,10 +20,11 @@ app.use(cors());
 app.get('/', (req, res) =>{
     res.json(data);
 })
-
-let URL = `https://api.openweathermap.org/data/2.5/weather?zip=90012,&APPID=${process.env.API_KEY}`;
+//url with api key to call
+let URL = `https://api.openweathermap.org/data/2.5/weather?zip=90012,&APPID=${process.env.API_KEY}&units=imperial`;
 // // let URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${process.env.API_KEY}`;
 
+//fetch data
 app.get('/weather', (req, res) => { 
     fetch(URL) 
     .then((response) => response.json()) 

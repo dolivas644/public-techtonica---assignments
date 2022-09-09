@@ -3,11 +3,14 @@ import {useState} from "react";
 
 
 const WeatherDashboard = () => {
+  //get useSate for zip that is taken into account
   const [zip, setZip] = useState(null);
+  //useState for the data needed for display
   const [result, setResult] = useState({
     main: {temp: 0, feels_like: 0},
     wind: {speed: 0},
     clouds: {all: 0},
+ 
   });
 
   console.log('result ', result);
@@ -26,6 +29,7 @@ console.log(setResult);
     setZip("");
     
 };
+
 // //city country , temp, 
 // // "main": {
 // //     "temp": 304,
@@ -41,17 +45,32 @@ console.log(setResult);
   return (
     <div className="App">
       <div className="weather">
-    <h1 className= "weatherHeader">Diana's Weather Forecast</h1>
+    <h1 class= "w3-card-4 w3-blue">Diana's Weather Forecast</h1>
     <form onSubmit={handleSubmit}>
 <input id="zipName" type="numbers" placeholder="Please enter your zip name" name="zip" onChange={(e) => setZip(e.target.value)} value={zip} required />
 <input id="submitBTN" type="submit" value="Submit" onClick={handleSubmit} />
     </form>
       </div>
       <div className="result">
-        <p>Temperature:{" "} {result.main.temp}</p>
+  
+        <div class ="w3-row w3-white">
+        <div class="w3-cointainer w3-quarter w3-center">
+        <p>Temperature:{" "} {result.main.temp} {"F"}</p>
+        <i class='fas fa-sun' ></i>
+        </div>
+        <div class="w3-cointainer w3-quarter w3-center ">
         <p>Feels like:{" "} {result.main.feels_like}</p>
+        <i class ='fas fa-temperature-high'></i>
+        </div>
+        <div class=" w3-cointainer w3-quarter w3-center ">
         <p>Wind Speed:{" "} {result.wind.speed}</p>
+        <i class='fas fa-wind' ></i>
+        </div>
+        <div class="w3-cointainer w3-quarter w3-center ">
         <p>Clouds:{" "} {result.clouds.all}</p>
+        <i class='fas fa-cloud-sun'></i>
+        </div>
+      </div>
       </div>
   </div>
 
