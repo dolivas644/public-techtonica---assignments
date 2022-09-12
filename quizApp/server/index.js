@@ -13,6 +13,10 @@ const PORT = 8080;
 //set cors
 app.use(cors());
 
+// Configuring body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //route for index
 app.get('/', (req,res) =>{
     res.json("Page is running");
