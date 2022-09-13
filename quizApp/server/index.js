@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch";
+import bodyParser from 'body-parser';
 
 //set config
 import { config } from "dotenv";
