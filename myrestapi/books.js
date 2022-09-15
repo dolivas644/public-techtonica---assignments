@@ -1,11 +1,13 @@
 const BOOKS = [{
-    "isbn": "553120441",
+    "isbn": "0553120441",
+
     "title": "Harry Potter and the Sorcerer's Stone",
     "author": "J.K. Rowling",
     "format": "Paperback"
 },
 {
     "isbn": "679889175",
+
     "title": "Harry Potter and the Chamber of Secrets",
     "author": "J.K. Rowling",
     "format": "Paperback"
@@ -17,24 +19,28 @@ const BOOKS = [{
     "format": "Paperback"
 },
 {
+
     "isbn": "53096095",
     "title": "Harry Potter and the Goblet of Fire",
     "author": "J.K. Rowling",
     "format": "Hardcover"
 },
 {
+
     "isbn": "5530962356",
     "title": "Harry Potter and the Order of the Phoenix",
     "author": "J.K. Rowling",
     "format": "Hardcover"
 },
 {
+
     "isbn": "553098976",
     "title": "Harry Potter and the Half-Blood Prince",
     "author": "J.K. Rowling",
     "format": "Hardcover"
 },
 {
+
     "isbn": "553093476",
     "title": "Harry Potter and the Deathly Hallows",
     "author": "J.K. Rowling",
@@ -47,18 +53,22 @@ const BOOKS = [{
     "format": "Hardcover"
 },
 {
+
     "isbn": "553115765",
     "title": "A Court of Mist and Fury",
     "author": "Sarah J. Maas",
     "format": "Hardcover"
 },
 {
+
     "isbn": "5531324567",
+
     "title": "A Court of Wings and Ruin",
     "author": "Sarah J. Maas",
     "format": "Hardcover"
 },
 {
+
     "isbn": "5531324511",
     "title": "A Court of Silver Flames",
     "author": "Sarah J. Maas",

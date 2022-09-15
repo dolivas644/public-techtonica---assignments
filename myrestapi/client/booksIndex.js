@@ -1,3 +1,4 @@
+
 // const setEditModal = (isbn) => {
 //     // Get information about the book using isbn
 //     const xhttp = new XMLHttpRequest();
@@ -37,6 +38,7 @@
 
 async function showBooks(){
     const URL= "http://localhost:8080/api/books";
+
     const response = await fetch(URL);
     console.log(response);
     const responseBooks = await response.json();
