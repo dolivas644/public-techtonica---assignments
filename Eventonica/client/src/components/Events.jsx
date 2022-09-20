@@ -163,10 +163,10 @@ const Events = () => {
                             type="text"
                             id="add-event-category"
                             placeholder="Virtual corgi meetup"
-                            value={state.name}
+                            value={state.category}
                             onChange={(e) =>
                               dispatch({
-                                type: 'editCategeory',
+                                type: 'editCategory',
                                 payload: e.target.value
                               })
                             }
