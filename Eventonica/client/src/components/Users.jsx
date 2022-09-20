@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DeleteUser from "./components/DeleteUser";
 
 const Users = () => {
     //mock users
@@ -28,6 +29,11 @@ const Users = () => {
         setEmail('');
     };
 
+    const deleteUser = (deleteId) => {
+        const newUsers = users.filter((i) => i.id !== deleteId);
+        setUsers(newUsers);
+      };
+
     return (
         <section className="user-management">
             <h2>User Management</h2>
@@ -54,7 +60,7 @@ const Users = () => {
                         <br></br>
                         <label>ID: </label> 
                         <br></br>
-                        <input type="number" id="add-user-id" value={id} onChange={(e) => setID(e.target.value)}/>
+                        <input type="text" id="add-user-id" value={id} onChange={(e) => setID(e.target.value)}/>
                         <br></br>
                         <label>Email: </label>
                         <br></br>
@@ -65,16 +71,7 @@ const Users = () => {
                 </form>
             </div>
 
-            <div>
-                <h3>Delete User</h3>
-                <form id="delete-user" action="#">
-                    <fieldset>
-                        <label>User ID</label>
-                        <input type="text" id="delete-user-id" />
-                    </fieldset>
-                    <input type="submit" />
-                </form>
-            </div>
+            <DeleteUser deleteUser={deleteUser}/>
         </section>
     )
 
