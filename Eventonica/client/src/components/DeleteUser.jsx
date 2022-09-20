@@ -1,11 +1,12 @@
 import { useState } from "react";
-
+//pass the function deleteUser as a prop(function comes from Users) 
 const DeleteUser = ({deleteUser}) => {
     //stores the userID that will be deleted
     const [deleteID, setdeleteID] =useState('');
 
     const handleSubmit = (e) =>{
         e.preventDefault();
+        //function callback
         deleteUser(deleteID);
     }
 

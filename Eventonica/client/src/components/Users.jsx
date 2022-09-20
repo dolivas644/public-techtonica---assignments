@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DeleteUser from "./components/DeleteUser";
+import DeleteUser from './DeleteUser';
 
 const Users = () => {
     //mock users
@@ -30,7 +30,9 @@ const Users = () => {
     };
 
     const deleteUser = (deleteId) => {
+        //deletes id if it matches the input
         const newUsers = users.filter((i) => i.id !== deleteId);
+        //updates the users list
         setUsers(newUsers);
       };
 
