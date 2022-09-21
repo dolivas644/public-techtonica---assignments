@@ -45,6 +45,23 @@ const handleSubmit1 = async (e) => {
     setUsers([...users, content]);
   };
 
+  // Add new user
+const handleDeleteUsers = async (e) => {
+    e.preventDefault();
+    const newUser = { id: '', name: '', email: '' };
+  
+    const rawResponse = await fetch('http://localhost:4000/users', {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    });
+    const content = await rawResponse.json();
+  
+    setUsers([...users, content]);
+  };
     // id, name, and email are states that store what values the user types in those fields
     // users is an array of user objects
     // All of these states can be defined in the component
