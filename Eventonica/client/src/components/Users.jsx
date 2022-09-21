@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DeleteUser from './DeleteUser';
+
 
 const Users = () => {
     //mock users
@@ -14,6 +15,35 @@ const Users = () => {
     const [name, setName] = useState('');
     const [id, setID] = useState('');
     const [email, setEmail] = useState('');
+
+    // client/src/components/Users.jsx
+const getUsers = async () => {
+    const response = await fetch('http://localhost:4000/users');
+    const user = await response.json();
+    setUsers(user);
+  };
+  
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  // Add new user
+const handleSubmit1 = async (e) => {
+    e.preventDefault();
+    const newUser = { id: '', name: '', email: '' };
+  
+    const rawResponse = await fetch('http://localhost:4000/users', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    });
+    const content = await rawResponse.json();
+  
+    setUsers([...users, content]);
+  };
 
     // id, name, and email are states that store what values the user types in those fields
     // users is an array of user objects
