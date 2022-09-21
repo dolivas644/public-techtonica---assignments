@@ -28,11 +28,11 @@ const getUsers = async () => {
   }, []);
 
   // Add new user
-const handleSubmit1 = async (e) => {
+const handleAddUser = async (e) => {
     e.preventDefault();
-    const newUser = { id: '', name: '', email: '' };
+    const newUser = { id, name, email };
   
-    const rawResponse = await fetch('http://localhost:4000/users', {
+    const response = await fetch('http://localhost:4000/users', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -40,17 +40,20 @@ const handleSubmit1 = async (e) => {
       },
       body: JSON.stringify(newUser)
     });
-    const content = await rawResponse.json();
+    const content = await response.json();
   
     setUsers([...users, content]);
+    setName('');
+    setEmail('');
+    setID('');
   };
 
-  // Add new user
+  // delete new user
 const handleDeleteUsers = async (e) => {
     e.preventDefault();
-    const newUser = { id: '', name: '', email: '' };
+    const newUser = { id, name, email};
   
-    const rawResponse = await fetch('http://localhost:4000/users', {
+    const response = await fetch('http://localhost:4000/users', {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
@@ -58,7 +61,7 @@ const handleDeleteUsers = async (e) => {
       },
       body: JSON.stringify(newUser)
     });
-    const content = await rawResponse.json();
+    const content = await response.json();
   
     setUsers([...users, content]);
   };
@@ -101,7 +104,7 @@ const handleDeleteUsers = async (e) => {
 
             <div>
                 <h3>Add User</h3>
-                <form id="add-user" action="#" onSubmit={handleSubmit}>
+                <form id="add-user" action="#" onSubmit={handleAddUser}>
                     <fieldset>
                         <label>Name: </label>
                         <br></br>
@@ -116,7 +119,7 @@ const handleDeleteUsers = async (e) => {
                         <input type="text" id="add-user-email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </fieldset>
                     {/* Add more form fields here */}
-                    <input type="submit" value="Add" onSubmit={handleSubmit}/>
+                    <input type="submit" value="Add"/>
                 </form>
             </div>
 
