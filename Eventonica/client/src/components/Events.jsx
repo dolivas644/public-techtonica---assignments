@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //mock events
 const event1 = {
@@ -51,6 +51,18 @@ const reducer = (state, action) => {
   };
 
 const Events = () => {
+    // client/src/components/Events.jsx
+const getEvents = async () => {
+    const response = await fetch('http://localhost:4000/events');
+    const events= await response.json();
+    setEvents(events);
+  };
+  
+  useEffect(() => {
+    getEvents();
+  }, []);
+
+
     //state for events
     const [events, setEvents] = useState([event1,event2,event3]);
 
@@ -70,6 +82,24 @@ const Events = () => {
         //updates list with new event
         setEvents([...events, state]);
       }
+      
+ // Add new event
+ const handleAddEvent = async (e) => {
+    e.preventDefault();
+    const newEvent= { id: '', name: '', description: '', category: '', date: '' };
+  
+    const rawResponse = await fetch('http://localhost:4000/events', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newEvent)
+    });
+    const content = await rawResponse.json();
+  
+    setEvents([...events, content]);
+  };
 
     return (
         <section className="event-management">
