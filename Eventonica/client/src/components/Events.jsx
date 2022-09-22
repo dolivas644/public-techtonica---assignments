@@ -51,6 +51,9 @@ const reducer = (state, action) => {
 };
 
 const Events = () => {
+    //state for events
+    const [events, setEvents] = useState([]);
+
     // client/src/components/Events.jsx
     const getEvents = async () => {
         const response = await fetch('http://localhost:4000/events');
@@ -63,8 +66,8 @@ const Events = () => {
     }, []);
 
 
-    //state for events
-    const [events, setEvents] = useState([event1, event2, event3]);
+    // //state for events
+    // const [events, setEvents] = useState([]);
 
     //initialistate of the form will be empty
     const initialState = {
