@@ -17,7 +17,7 @@ router.get('/', async function (req, res, next) {
 
 router.post('/', async (req, res) => {
     const events = {
-        id: req.body.id,
+      id: req.body.id,
       name: req.body.name,
       description: req.body.description,
       category: req.body.category,
