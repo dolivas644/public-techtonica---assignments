@@ -49,22 +49,17 @@ const handleAddUser = async (e) => {
   };
 
   // delete new user
-const handleDeleteUsers = async (e) => {
-    e.preventDefault();
-    const newUser = { id, name, email};
-  
-    const response = await fetch('http://localhost:4000/users', {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newUser)
-    });
-    const content = await response.json();
-  
-    setUsers([...users, content]);
+const handleDeleteUsers = async (deleteUser) => {
+  let response = await fetch(`http://localhost:4000/users/${deleteUser}`, {
+method:"DELETE",
+  })
+  await response.json();
+  const deleteUsers = users.filter((i) => i.id !==deleteUser);
+    //updates the users list
+    console.log(deleteUsers);
+    setUsers(deleteUsers);
   };
+  
     // id, name, and email are states that store what values the user types in those fields
     // users is an array of user objects
     // All of these states can be defined in the component
@@ -79,12 +74,12 @@ const handleDeleteUsers = async (e) => {
         setEmail('');
     };
 
-    const deleteUser = (deleteId) => {
-        //deletes id if it matches the input
-        const newUsers = users.filter((i) => i.id !== deleteId);
-        //updates the users list
-        setUsers(newUsers);
-      };
+    // const deleteUser = (deleteId) => {
+    //     //deletes id if it matches the input
+    //     const newUsers = users.filter((i) => i.id !== deleteId);
+    //     //updates the users list
+    //     setUsers(newUsers);
+    //   };
 
     return (
         <section className="user-management">
@@ -96,12 +91,13 @@ const handleDeleteUsers = async (e) => {
                     return (
                         <li key={index}>
                             Name: {user.name}, Email: {user.email}
+                            <button onClick={() =>handleDeleteUsers(user.id)}>Delete</button>
                         </li>
                     );
                 })}
                 
             </ul>
-
+            {/* <button>Delete</button> */}
             <div>
                 <h3>Add User</h3>
                 <form id="add-user" action="#" onSubmit={handleAddUser}>
@@ -122,8 +118,7 @@ const handleDeleteUsers = async (e) => {
                     <input type="submit" value="Add"/>
                 </form>
             </div>
-
-            <DeleteUser deleteUser={deleteUser}/>
+            <DeleteUser  handleDeleteUsers={handleDeleteUsers}/>
         </section>
     )
 

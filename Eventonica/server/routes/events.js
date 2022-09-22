@@ -1,4 +1,4 @@
-import db from "../db/dbConnection.js";
+  import db from "../db/dbConnection.js";
 import express from "express";
 const router = express.Router();
 /* GET users listing. */
