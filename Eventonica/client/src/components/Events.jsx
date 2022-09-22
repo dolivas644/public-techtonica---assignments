@@ -29,77 +29,78 @@ const event3 = {
 const reducer = (state, action) => {
     console.log(action, 'this is the action');
     switch (action.type) {
-      case 'editName':
-        console.log('Logged if the editName action is being dispatched');
-        //it updates the name to the input value
-        return { ...state, name: action.payload };
-  
-      case 'editDescription':
-        return { ...state, description: action.payload };
-  
-      case 'editCategory':
-        return { ...state, category: action.payload };
+        case 'editName':
+            console.log('Logged if the editName action is being dispatched');
+            //it updates the name to the input value
+            return { ...state, name: action.payload };
+
+        case 'editDescription':
+            return { ...state, description: action.payload };
+
+        case 'editCategory':
+            return { ...state, category: action.payload };
 
         case 'editDate':
-        return { ...state, date: action.payload };
+            return { ...state, date: action.payload };
 
         case 'editID':
-        return { ...state, id: action.payload };
-      default:
-        return state;
+            return { ...state, id: action.payload };
+        default:
+            return state;
     }
-  };
+};
 
 const Events = () => {
     // client/src/components/Events.jsx
-const getEvents = async () => {
-    const response = await fetch('http://localhost:4000/events');
-    const events= await response.json();
-    setEvents(events);
-  };
-  
-  useEffect(() => {
-    getEvents();
-  }, []);
+    const getEvents = async () => {
+        const response = await fetch('http://localhost:4000/events');
+        const events = await response.json();
+        setEvents(events);
+    };
+
+    useEffect(() => {
+        getEvents();
+    }, []);
 
 
     //state for events
-    const [events, setEvents] = useState([event1,event2,event3]);
+    const [events, setEvents] = useState([event1, event2, event3]);
 
-//initialistate of the form will be empty
-      const initialState = {
+    //initialistate of the form will be empty
+    const initialState = {
         id: '',
         name: '',
         date: null,
         description: '',
         category: ''
-      };
+    };
 
-      const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
+    console.log(state);
 
-      const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         //updates list with new event
         setEvents([...events, state]);
-      }
-      
- // Add new event
- const handleAddEvent = async (e) => {
-    e.preventDefault();
-    const newEvent= { id: '', name: '', description: '', category: '', date: '' };
-  
-    const rawResponse = await fetch('http://localhost:4000/events', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newEvent)
-    });
-    const content = await rawResponse.json();
-  
-    setEvents([...events, content]);
-  };
+    }
+
+    // Add new event
+    const handleAddEvent = async (e) => {
+        e.preventDefault();
+        const newEvent = { id: state.id, name: state.name, description: state.description, category: state.category, date: state.date };
+        console.log(newEvent);
+        const response = await fetch('http://localhost:4000/events', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newEvent)
+        });
+        const content = await response.json();
+
+        setEvents([...events, content]);
+    };
 
     return (
         <section className="event-management">
@@ -124,7 +125,7 @@ const getEvents = async () => {
                 </ul>
 
                 <h3>Add Event</h3>
-                <form id="add-event" action="#" onSubmit={handleSubmit}>
+                <form id="add-event" action="#" onSubmit={handleAddEvent}>
                     <fieldset>
                         <br></br>
                         <label>Name: </label>
@@ -135,10 +136,10 @@ const getEvents = async () => {
                             placeholder="Puppy Cat"
                             value={state.name}
                             onChange={(e) =>
-                              dispatch({
-                                type: 'editName',
-                                payload: e.target.value
-                              })
+                                dispatch({
+                                    type: 'editName',
+                                    payload: e.target.value
+                                })
                             }
                         />
                         <br></br>
@@ -150,10 +151,10 @@ const getEvents = async () => {
                             placeholder="1"
                             value={state.id}
                             onChange={(e) =>
-                              dispatch({
-                                type: 'editID',
-                                payload: e.target.value
-                              })
+                                dispatch({
+                                    type: 'editID',
+                                    payload: e.target.value
+                                })
                             }
                         />
                         <br></br>
@@ -165,10 +166,10 @@ const getEvents = async () => {
                             placeholder="02/20/2022"
                             value={state.date}
                             onChange={(e) =>
-                              dispatch({
-                                type: 'editDate',
-                                payload: e.target.value
-                              })
+                                dispatch({
+                                    type: 'editDate',
+                                    payload: e.target.value
+                                })
                             }
                         />
                         <br></br>
@@ -180,10 +181,10 @@ const getEvents = async () => {
                             placeholder="Virtual corgi meetup"
                             value={state.description}
                             onChange={(e) =>
-                              dispatch({
-                                type: 'editDescription',
-                                payload: e.target.value
-                              })
+                                dispatch({
+                                    type: 'editDescription',
+                                    payload: e.target.value
+                                })
                             }
                         />
                         <br></br>
@@ -195,10 +196,10 @@ const getEvents = async () => {
                             placeholder="Virtual corgi meetup"
                             value={state.category}
                             onChange={(e) =>
-                              dispatch({
-                                type: 'editCategory',
-                                payload: e.target.value
-                              })
+                                dispatch({
+                                    type: 'editCategory',
+                                    payload: e.target.value
+                                })
                             }
                         />
                     </fieldset>
