@@ -108,15 +108,15 @@ const Users = () => {
           <fieldset>
             <label>Name: </label>
             <br></br>
-            <input type="text" id="add-user-name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" id="add-user-name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
             <br></br>
             <label>ID: </label>
             <br></br>
-            <input type="text" id="add-user-id" value={id} onChange={(e) => setID(e.target.value)} />
+            <input type="text" id="add-user-id" value={id} placeholder="ID #"onChange={(e) => setID(e.target.value)} />
             <br></br>
             <label>Email: </label>
             <br></br>
-            <input type="text" id="add-user-email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" id="add-user-email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </fieldset>
           {/* Add more form fields here */}
           <input type="submit" value="Add" />

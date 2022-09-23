@@ -120,6 +120,7 @@ const Events = () => {
     console.log(deleteEventFunction);
     //updates list
     setEvents(deleteEventFunction);
+    
   };
 
     return (
@@ -153,7 +154,7 @@ const Events = () => {
                         <input
                             type="text"
                             id="add-event-name"
-                            placeholder="Puppy Cat"
+                            placeholder="Name"
                             value={state.name}
                             onChange={(e) =>
                                 dispatch({
@@ -168,7 +169,7 @@ const Events = () => {
                         <input
                             type="text"
                             id="add-event-id"
-                            placeholder="1"
+                            placeholder="ID #"
                             value={state.id}
                             onChange={(e) =>
                                 dispatch({
@@ -181,9 +182,9 @@ const Events = () => {
                         <label>Date: </label>
                         <br></br>
                         <input
-                            type="text"
+                            type="date"
                             id="add-event-date"
-                            placeholder="02/20/2022"
+                            placeholder="yyyy-mm-dd"
                             value={state.date}
                             onChange={(e) =>
                                 dispatch({
@@ -198,7 +199,7 @@ const Events = () => {
                         <input
                             type="text"
                             id="add-event-description"
-                            placeholder="Virtual corgi meetup"
+                            placeholder="Event description"
                             value={state.description}
                             onChange={(e) =>
                                 dispatch({
@@ -213,7 +214,7 @@ const Events = () => {
                         <input
                             type="text"
                             id="add-event-category"
-                            placeholder="Virtual corgi meetup"
+                            placeholder="Event category"
                             value={state.category}
                             onChange={(e) =>
                                 dispatch({
