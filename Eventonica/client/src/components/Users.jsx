@@ -101,7 +101,7 @@ const Users = () => {
           );
         })}
       </ul>
-      {/* <button>Delete</button> */}
+
       <div>
         <h3>Add User</h3>
         <form id="add-user" action="#" onSubmit={handleAddUser}>

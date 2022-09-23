@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <img src={calendar} alt="Calendar Star Logo" />
+        <img src={calendar} alt="Calendar Star Logo" className="calendar"/>
         <h1>Eventonica</h1>
       </header>
 

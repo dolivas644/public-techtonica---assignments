@@ -7,8 +7,17 @@ header {
   /* For more about flexbox, see https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
   display: flex;
   align-items: center;
+  text-align: center;
+  background-color: rgb(11, 11, 177);
+  justify-content: center;
+  color: aliceblue;
 }
-
+calendar{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: left;
+}
 header img {
   height: 64px;
   margin-right: 1em;
@@ -26,5 +35,7 @@ aside {
 footer {
   margin-top: 1rem;
   font-size: small;
-  color: gray;
+  color:aliceblue;
+  background-color: rgb(11, 11, 177);
+  text-align: center;
 }

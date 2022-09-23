@@ -15,7 +15,7 @@ const DeleteEvent = ({deleteEventCallback}) => {
 
     return (
         <div>
-            <h3>Delete User</h3>
+            <h3>Delete Event</h3>
             <form id="delete-event" action="#" onSubmit={handleSubmit}>
                 <fieldset>
                     <label>User ID</label>
