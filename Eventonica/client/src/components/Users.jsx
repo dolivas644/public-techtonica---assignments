@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import DeleteUser from './DeleteUser';
+import "../App.css";
 
 
 const Users = () => {
@@ -92,11 +93,15 @@ const Users = () => {
       <table id="users-list">
         {/* display all existing Users here */}
         {/* <li>...</li> */}
+        <tr>
+        <th>Name:</th> 
+        <th>Email:</th> 
+        </tr>
         {users.map((user, index) => {
           return (
             <tr key={index}>
-              <th>Name:</th> <td>{user.name}</td>,
-               <th>Email:</th> <td>{user.email}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
               {/* <button onClick={() => handleDeleteUsers(user.id)}>Delete User</button> */}
             </tr>
           );

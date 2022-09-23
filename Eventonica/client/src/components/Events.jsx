@@ -1,7 +1,6 @@
 import { useReducer } from "react";
 import { useState, useEffect } from "react";
 import DeleteEvent from "./DeleteEvent";
-
 //mock events
 const event1 = {
     id: "1",
@@ -142,14 +141,21 @@ const Events = () => {
                 <table id="events-list">
                     {/* Display all Events here */}
                     {/* <li>...</li> */}
+                    <tr>
+                    <th>ID:</th>
+                    <th>Name: </th>
+                    <th>Date:</th>
+                    <th>Description: </th>
+                    <th>Category:</th>
+                    </tr>
                     {events.map((event, index) => {
                         return (
                             <tr key={index}>
-                                <th>ID:</th> <td>{event.id}</td>
-                                <th>Name: </th> <td>{event.name}</td>
-                                <th>Date:</th> <td>{event.date}</td>
-                                <th>Description: </th> <td>{event.description}</td>
-                                <th>Category:</th> <td>{event.category}</td>
+                                 <td>{event.id}</td>
+                                 <td>{event.name}</td>
+                                 <td>{event.date}</td>
+                                 <td>{event.description}</td>
+                                 <td>{event.category}</td>
                                 {/* <button onClick={() => handleDeleteEvents(event.id)}>Delete Event</button> */}
                             </tr>
                         )
