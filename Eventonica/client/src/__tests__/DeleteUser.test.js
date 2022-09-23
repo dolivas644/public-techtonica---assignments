@@ -5,7 +5,7 @@ afterEach(() => {
     cleanup();
 })
 
-//First test will check if User renders
+//First test will check if DeleteUser renders
 describe("DeleteUser", () => {
     test("DeleteUser renders", ()=>{
 render(<DeleteUser />)

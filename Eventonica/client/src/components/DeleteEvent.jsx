@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //pass the function deleteUser as a prop(function comes from Users) 
-const DeleteEvent = ({deleteEventCallback}) => {
+const DeleteEvent = ({onDeleteEvents}) => {
 
     //stores the userID that will be deleted
     const [deleteEventId, setDeleteEventId] =useState('');
@@ -9,7 +9,7 @@ const DeleteEvent = ({deleteEventCallback}) => {
     const handleSubmit = (e) =>{
         e.preventDefault();
         //function callback
-        deleteEventCallback(deleteEventId);
+        onDeleteEvents(deleteEventId);
         setDeleteEventId('');
     }
 
@@ -18,7 +18,7 @@ const DeleteEvent = ({deleteEventCallback}) => {
             <h3>Delete Event</h3>
             <form id="delete-event" action="#" onSubmit={handleSubmit}>
                 <fieldset>
-                    <label>User ID</label>
+                    <label>Event ID</label>
                     <input type="text"
                      id="delete-event-id" 
                      value={deleteEventId}

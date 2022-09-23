@@ -49,16 +49,16 @@ const Users = () => {
   };
 
   // delete new user
-  const handleDeleteUsers = async (deleteUser) => {
+  const handleDeleteUsers = async (userId) => {
     //fetches info from users for specific "deleteUser"
-    let response = await fetch(`http://localhost:4000/users/${deleteUser}`, {
+    let response = await fetch(`http://localhost:4000/users/${userId}`, {
       //specifies method to remove item
       method: "DELETE",
     })
     //gets json response
     await response.json();
     //deleting functionality 
-    const deleteUsers = users.filter((i) => i.id !== deleteUser);
+    const deleteUsers = users.filter((i) => i.id !== parseInt(userId));
     //updates the users list
     console.log(deleteUsers);
     //updates list
@@ -68,16 +68,16 @@ const Users = () => {
   // id, name, and email are states that store what values the user types in those fields
   // users is an array of user objects
   // All of these states can be defined in the component
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newUser = { id: id, name: name, email: email };
-    //adds newUser to users list
-    setUsers([...users, newUser]);
-    //reset input field
-    setID('');
-    setName('');
-    setEmail('');
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const newUser = { id: id, name: name, email: email };
+  //   //adds newUser to users list
+  //   setUsers([...users, newUser]);
+  //   //reset input field
+  //   setID('');
+  //   setName('');
+  //   setEmail('');
+  // };
 
   // const deleteUser = (deleteId) => {
   //     //deletes id if it matches the input
@@ -96,7 +96,7 @@ const Users = () => {
           return (
             <li key={index}>
               Name: {user.name}, Email: {user.email}
-              <button onClick={() => handleDeleteUsers(user.id)}>Delete User</button>
+              {/* <button onClick={() => handleDeleteUsers(user.id)}>Delete User</button> */}
             </li>
           );
         })}
@@ -122,7 +122,7 @@ const Users = () => {
           <input type="submit" value="Add" />
         </form>
       </div>
-      <DeleteUser handleDeleteUsers={handleDeleteUsers} />
+      <DeleteUser onDeleteUsers={handleDeleteUsers} />
     </section>
   )
 

@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { useState, useEffect } from "react";
+import DeleteEvent from "./DeleteEvent";
 
 //mock events
 const event1 = {
@@ -46,6 +47,8 @@ const reducer = (state, action) => {
 
         case 'editID':
             return { ...state, id: action.payload };
+        case 'clearForm':
+            return {name: "", id: '', description: '', category: '', date: ''};
         default:
             return state;
     }
@@ -109,19 +112,20 @@ const Events = () => {
         const content = await response.json();
 //updates events list
         setEvents([...events, content]);
+        dispatch({type:'clearForm'});
     };
 
      // delete new user
-  const handleDeleteEvents = async (deleteEventCallback) => {
+  const handleDeleteEvents = async (userId) => {
     //fetches info from users for specific "deleteUser"
-    let response = await fetch(`http://localhost:4000/events/${deleteEventCallback}`, {
+    let response = await fetch(`http://localhost:4000/events/${userId}`, {
       //specifies method to remove item
       method: "DELETE",
     })
     //gets json response
     await response.json();
     //deleting functionality 
-    const deleteEventFunction = events.filter((i) => i.id !== deleteEventCallback);
+    const deleteEventFunction = events.filter((i) => i.id !== parseInt(userId));
     //updates the users list
     console.log(deleteEventFunction);
     //updates list
@@ -145,7 +149,7 @@ const Events = () => {
                                 Date:{event.date},
                                 Description:{event.description} ,
                                 Category: {event.category},
-                                <button onClick={() => handleDeleteEvents(event.id)}>Delete User</button>
+                                {/* <button onClick={() => handleDeleteEvents(event.id)}>Delete Event</button> */}
                             </li>
                         )
                     })}
@@ -234,6 +238,7 @@ const Events = () => {
                     <input type="submit" />
                 </form>
             </div>
+            <DeleteEvent onDeleteEvents={handleDeleteEvents} />
         </section>
     )
 }
