@@ -26,6 +26,7 @@ const event3 = {
     category: "Education",
 };
 
+//create useReducer for changing values
 const reducer = (state, action) => {
     console.log(action, 'this is the action');
     switch (action.type) {
@@ -81,18 +82,22 @@ const Events = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     console.log(state);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        //updates list with new event
-        setEvents([...events, state]);
-    }
+    //hard code to add users for frontend
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     //updates list with new event
+    //     setEvents([...events, state]);
+    // }
 
     // Add new event
     const handleAddEvent = async (e) => {
         e.preventDefault();
+        //access key values through useReducer
         const newEvent = { id: state.id, name: state.name, description: state.description, category: state.category, date: state.date };
         console.log(newEvent);
+        //fetch api from events
         const response = await fetch('http://localhost:4000/events', {
+            //posts data on page
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -100,8 +105,9 @@ const Events = () => {
             },
             body: JSON.stringify(newEvent)
         });
+        //gets data in json
         const content = await response.json();
-
+//updates events list
         setEvents([...events, content]);
     };
 
@@ -120,7 +126,7 @@ const Events = () => {
     console.log(deleteEventFunction);
     //updates list
     setEvents(deleteEventFunction);
-    
+
   };
 
     return (

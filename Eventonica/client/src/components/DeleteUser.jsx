@@ -7,7 +7,6 @@ const DeleteUser = ({deleteUser}) => {
     const [id, setId] =useState('');
 
     const handleSubmit = (e) =>{
-        debugger;
         e.preventDefault();
         //function callback
         deleteUser(id);
