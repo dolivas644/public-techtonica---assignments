@@ -105,6 +105,23 @@ const Events = () => {
         setEvents([...events, content]);
     };
 
+     // delete new user
+  const handleDeleteEvents = async (deleteEventCallback) => {
+    //fetches info from users for specific "deleteUser"
+    let response = await fetch(`http://localhost:4000/events/${deleteEventCallback}`, {
+      //specifies method to remove item
+      method: "DELETE",
+    })
+    //gets json response
+    await response.json();
+    //deleting functionality 
+    const deleteEventFunction = events.filter((i) => i.id !== deleteEventCallback);
+    //updates the users list
+    console.log(deleteEventFunction);
+    //updates list
+    setEvents(deleteEventFunction);
+  };
+
     return (
         <section className="event-management">
             <h2>Event Management</h2>
@@ -121,7 +138,7 @@ const Events = () => {
                                 Date:{event.date},
                                 Description:{event.description} ,
                                 Category: {event.category},
-
+                                <button onClick={() => handleDeleteEvents(event.id)}>Delete User</button>
                             </li>
                         )
                     })}
