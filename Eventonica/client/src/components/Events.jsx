@@ -112,20 +112,21 @@ const Events = () => {
         const content = await response.json();
 //updates events list
         setEvents([...events, content]);
+
         dispatch({type:'clearForm'});
     };
 
-     // delete new user
-  const handleDeleteEvents = async (userId) => {
+     // delete new event
+  const handleDeleteEvents = async (eventId) => {
     //fetches info from users for specific "deleteUser"
-    let response = await fetch(`http://localhost:4000/events/${userId}`, {
+    let response = await fetch(`http://localhost:4000/events/${eventId}`, {
       //specifies method to remove item
       method: "DELETE",
     })
     //gets json response
     await response.json();
     //deleting functionality 
-    const deleteEventFunction = events.filter((i) => i.id !== parseInt(userId));
+    const deleteEventFunction = events.filter((i) => i.id !== parseInt(eventId));
     //updates the users list
     console.log(deleteEventFunction);
     //updates list
@@ -138,22 +139,22 @@ const Events = () => {
             <h2>Event Management</h2>
             <div>
                 <h3>All Events</h3>
-                <ul id="events-list">
+                <table id="events-list">
                     {/* Display all Events here */}
                     {/* <li>...</li> */}
                     {events.map((event, index) => {
                         return (
-                            <li key={index}>
-                                ID:{event.id},
-                                Name: {event.name},
-                                Date:{event.date},
-                                Description:{event.description} ,
-                                Category: {event.category},
+                            <tr key={index}>
+                                <th>ID:</th> <td>{event.id}</td>
+                                <th>Name: </th> <td>{event.name}</td>
+                                <th>Date:</th> <td>{event.date}</td>
+                                <th>Description: </th> <td>{event.description}</td>
+                                <th>Category:</th> <td>{event.category}</td>
                                 {/* <button onClick={() => handleDeleteEvents(event.id)}>Delete Event</button> */}
-                            </li>
+                            </tr>
                         )
                     })}
-                </ul>
+                </table>
 
                 <h3>Add Event</h3>
                 <form id="add-event" action="#" onSubmit={handleAddEvent}>

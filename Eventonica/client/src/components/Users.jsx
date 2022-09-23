@@ -89,18 +89,19 @@ const Users = () => {
   return (
     <section className="user-management">
       <h2>User Management</h2>
-      <ul id="users-list">
+      <table id="users-list">
         {/* display all existing Users here */}
         {/* <li>...</li> */}
         {users.map((user, index) => {
           return (
-            <li key={index}>
-              Name: {user.name}, Email: {user.email}
+            <tr key={index}>
+              <th>Name:</th> <td>{user.name}</td>,
+               <th>Email:</th> <td>{user.email}</td>
               {/* <button onClick={() => handleDeleteUsers(user.id)}>Delete User</button> */}
-            </li>
+            </tr>
           );
         })}
-      </ul>
+      </table >
 
       <div>
         <h3>Add User</h3>
@@ -109,10 +110,6 @@ const Users = () => {
             <label>Name: </label>
             <br></br>
             <input type="text" id="add-user-name" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-            <br></br>
-            <label>ID: </label>
-            <br></br>
-            <input type="text" id="add-user-id" value={id} placeholder="ID #"onChange={(e) => setID(e.target.value)} />
             <br></br>
             <label>Email: </label>
             <br></br>
