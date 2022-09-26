@@ -1,0 +1,44 @@
+fieldset {
+  border: none;
+  margin: 1rem 0;
+}
+
+header {
+  /* For more about flexbox, see https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(11, 11, 177);
+  justify-content: center;
+  color: aliceblue;
+}
+calendar{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: left;
+}
+header img {
+  height: 64px;
+  margin-right: 1em;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+aside {
+  margin-left: 2em;
+}
+
+footer {
+  margin-top: 1rem;
+  font-size: small;
+  color:aliceblue;
+  background-color: rgb(11, 11, 177);
+  text-align: center;
+}
+table, th, td{
+  border: 1px solid black;
+}

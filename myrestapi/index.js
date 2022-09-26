@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+//this will your express server
+import express from "express";
+import cors from "cors";
+import books from "./books.js";
+
+const app=express();
+const PORT = 8080;
+
+//configuring cors middleware
+app.use(cors());
+
+//const direct
+
+app.get('/',(req, resp)=> {
+    resp.send("Hello Techtonica. first REST API")
+})
+
+app.get('/books', (req, resp)=> {
+    resp.json(books);
+})
+
+
+
+app.listen(PORT, () => console.log(`Hola at ${PORT}`));
+
+||||||| 7bfdb853
+=======
 
 import express from "express";
 import cors from "cors";
@@ -96,3 +124,4 @@ app.delete('/api/books/:isbn', (req, res) => {
 
 
 app.listen(PORT, () => console.log(`HOLA! Server running at ${PORT}`));
+>>>>>>> bfe4f31ea68119257835218e2e99627b185e74ec
