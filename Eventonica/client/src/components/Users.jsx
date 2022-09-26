@@ -94,12 +94,14 @@ const Users = () => {
         {/* display all existing Users here */}
         {/* <li>...</li> */}
         <tr>
+        <th>ID:</th> 
         <th>Name:</th> 
         <th>Email:</th> 
         </tr>
         {users.map((user, index) => {
           return (
             <tr key={index}>
+              <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
               {/* <button onClick={() => handleDeleteUsers(user.id)}>Delete User</button> */}
